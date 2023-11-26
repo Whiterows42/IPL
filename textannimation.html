@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        }
+
+        @-webkit-keyframes scale-up-center {
+            0% {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+            }
+            100% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+            }
+        }
+
+        @keyframes scale-up-center {
+            0% {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+            }
+            100% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+            }
+        }
+
+        .main {
+            width: 100%;
+            height: 500px;
+            background-position: url(background.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            background-image: url('https://images.news18.com/ibnlive/uploads/2022/02/chennai-superkings.jpg?impolicy=website&width=418&height=278');
+            background-size: cover;
+            background-position: center;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-repeat: no-repeat;
+            color: transparent;
+            display: none;
+            position: relative;
+            text-align: center;
+            top: 300px;
+            font-size: 100px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        button {
+            background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);
+            padding: 20px 40px;
+            border-radius: 7px;
+            font-size: 32px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            color: #E6E6FA;
+        }
+
+        .audio {
+    display: none !important;
+    
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+
+        <h1 id="show">
+            Chennai Super Kings
+        </h1>
+
+        <button id="btn" onclick="show()"> Can You Check Who will Win The IPL <i class="fa fa-show"></i> </button>
+
+        <audio id="audio" style="display: none;" controls>
+            <!-- Provide the link to your audio file in the src attribute -->
+            <source src="bgm.mp3" type="audio/mp3">
+        </audio>
+
+    </div>
+
+    <script>
+        function show() {
+            var show = document.getElementById("show");
+            show.style.display = "block";
+
+            var btn = document.getElementById("btn");
+            btn.style.display = "none";
+
+            var get = document.body;
+            get.style.backgroundImage = "url('https://crickettimes.com/wp-content/uploads/2023/06/MS-Dhoni-chennai.jpg')";
+            get.style.backgroundSize = "cover";
+            get.style.display = "block";
+
+            // Add transition properties
+            get.style.transition = "background-image 2.9s ease";
+
+            // Trigger a reflow (force the browser to apply styles immediately)
+            get.offsetHeight;
+
+            // Change the background image after the transition has been set
+            get.style.backgroundImage = "url('https://crickettimes.com/wp-content/uploads/2023/06/MS-Dhoni-chennai.jpg')";
+
+            // Get the existing audio element
+            var audio = document.getElementById("audio");
+
+            // Play the audio
+            audio.play();
+        }
+    </script>
+</body>
+</html>
